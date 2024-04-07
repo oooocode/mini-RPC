@@ -1,7 +1,7 @@
-package com.wth.example.service;
+package com.wth.example.common.service;
 
 
-import com.wth.example.model.User;
+import com.wth.example.common.model.User;
 
 /**
  * 用户服务

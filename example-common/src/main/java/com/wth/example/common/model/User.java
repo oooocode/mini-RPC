@@ -1,4 +1,4 @@
-package com.wth.example.model;
+package com.wth.example.common.model;
 
 import java.io.Serializable;
 

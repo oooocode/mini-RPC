@@ -1,6 +1,7 @@
 package com.wth.example.provider;
 
-import com.wth.example.service.UserService;
+import com.wth.example.common.service.UserService;
+import com.wth.minirpc.RpcApplication;
 import com.wth.minirpc.registry.LocalRegistry;
 import com.wth.minirpc.server.VertxHttpServer;
 
@@ -10,9 +11,11 @@ import com.wth.minirpc.server.VertxHttpServer;
 public class EasyProviderExample {
 
     public static void main(String[] args) {
+        RpcApplication.init();
+
         LocalRegistry.register(UserService.class.getName(), UserServiceImpl.class);
 
         VertxHttpServer vertxHttpServer = new VertxHttpServer();
-        vertxHttpServer.doStart(8000);
+        vertxHttpServer.doStart(RpcApplication.getRpcConfig().getServerPort());
     }
 }

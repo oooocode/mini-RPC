@@ -23,7 +23,7 @@
 
         <dependency>
             <groupId>com.wth</groupId>
-            <artifactId>mini-rpc-easy</artifactId>
+            <artifactId>mini-rpc-core</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 

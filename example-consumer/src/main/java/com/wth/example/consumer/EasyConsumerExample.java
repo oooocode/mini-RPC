@@ -1,7 +1,9 @@
 package com.wth.example.consumer;
 
-import com.wth.example.model.User;
-import com.wth.example.service.UserService;
+import com.wth.example.common.model.User;
+import com.wth.example.common.service.UserService;
+import com.wth.minirpc.RpcApplication;
+import com.wth.minirpc.config.RpcConfig;
 import com.wth.minirpc.proxy.ServiceProxyFactory;
 
 /**
@@ -10,6 +12,9 @@ import com.wth.minirpc.proxy.ServiceProxyFactory;
 public class EasyConsumerExample {
 
     public static void main(String[] args) {
+        RpcConfig rpcConfig = RpcApplication.getRpcConfig();
+        System.out.println("rpcConfig = " + rpcConfig);
+
         // 获取 UserService 服务提供者对象
         UserService userService = ServiceProxyFactory.getProxy(UserService.class);
         User user = new User();

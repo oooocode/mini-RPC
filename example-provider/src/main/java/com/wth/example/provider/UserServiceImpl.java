@@ -1,7 +1,7 @@
 package com.wth.example.provider;
 
-import com.wth.example.model.User;
-import com.wth.example.service.UserService;
+import com.wth.example.common.model.User;
+import com.wth.example.common.service.UserService;
 
 public class UserServiceImpl implements UserService {
 
