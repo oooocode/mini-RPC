@@ -11,7 +11,7 @@ public class ConfigUtils {
     /**
      * 加载配置对象 支持分区环境
      * @param tClass 配置对象类
-     * @param prefix 前缀
+     * @param prefix 配置文件前缀
      * @return
      */
     public static <T> T loadConfig(Class<T> tClass, String prefix) {
