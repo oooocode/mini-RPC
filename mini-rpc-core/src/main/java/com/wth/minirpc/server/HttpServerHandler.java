@@ -1,10 +1,12 @@
 package com.wth.minirpc.server;
 
+import com.wth.minirpc.RpcApplication;
 import com.wth.minirpc.model.RpcRequest;
 import com.wth.minirpc.model.RpcResponse;
 import com.wth.minirpc.registry.LocalRegistry;
 import com.wth.minirpc.serializer.JdkSerializer;
 import com.wth.minirpc.serializer.Serializer;
+import com.wth.minirpc.serializer.SerializerFactory;
 import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.HttpServerRequest;
@@ -19,7 +21,7 @@ public class HttpServerHandler implements Handler<HttpServerRequest> {
     @Override
     public void handle(HttpServerRequest request) {
         // 指定序列化器
-        final JdkSerializer serializer = new JdkSerializer();
+        final Serializer serializer = SerializerFactory.get(RpcApplication.getRpcConfig().getSerializer());
 
         // 记录日志
         System.out.println("Received request: " + request.method() + " " + request.uri());
