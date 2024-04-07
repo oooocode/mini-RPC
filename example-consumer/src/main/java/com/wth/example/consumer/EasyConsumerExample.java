@@ -17,9 +17,11 @@ public class EasyConsumerExample {
 
         // 获取 UserService 服务提供者对象
         UserService userService = ServiceProxyFactory.getProxy(UserService.class);
+        UserService userService1 = ServiceProxyFactory.getProxy(UserService.class);
         User user = new User();
         user.setName("123");
         User result = userService.getUser(user);
+        User result1 = userService1.getUser(user);
         if (result != null) {
             System.out.println("名字为" + result.getName());
         } else {

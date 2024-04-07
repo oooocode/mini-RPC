@@ -52,6 +52,10 @@ public class SpiLoader {
      */
     private static final List<Class<?>> LOAD_CLASS_LIST = Arrays.asList(Serializer.class);
 
+    public static Map<String, Class<?>> getSpiClassByClassName(String className) {
+        return loaderMap.get(className);
+    }
+
     /**
      * 加载所有类型
      */

@@ -14,6 +14,7 @@ import io.vertx.core.http.HttpServerResponse;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.ServiceLoader;
 
 public class HttpServerHandler implements Handler<HttpServerRequest> {
 
@@ -22,10 +23,8 @@ public class HttpServerHandler implements Handler<HttpServerRequest> {
     public void handle(HttpServerRequest request) {
         // 指定序列化器
         final Serializer serializer = SerializerFactory.getInstance(RpcApplication.getRpcConfig().getSerializer());
-
         // 记录日志
         System.out.println("Received request: " + request.method() + " " + request.uri());
-
         // 异步处理 HTTP 请求
         request.handler(body -> {
             byte[] bytes = body.getBytes();
@@ -70,7 +69,7 @@ public class HttpServerHandler implements Handler<HttpServerRequest> {
      * @param rpcResponse
      * @param serializer
      */
-    void doResponse (HttpServerRequest request, RpcResponse rpcResponse, Serializer serializer){
+    void doResponse(HttpServerRequest request, RpcResponse rpcResponse, Serializer serializer) {
         HttpServerResponse httpServerResponse = request.response()
                 .putHeader("content-type", "application/json");
         try {
