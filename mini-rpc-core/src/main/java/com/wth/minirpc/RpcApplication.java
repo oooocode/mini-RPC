@@ -2,7 +2,6 @@ package com.wth.minirpc;
 
 import com.wth.minirpc.config.RpcConfig;
 import com.wth.minirpc.constant.RpcConstant;
-import com.wth.minirpc.model.RpcRequest;
 import com.wth.minirpc.utils.ConfigUtils;
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,7 +33,7 @@ public class RpcApplication {
 
     public static RpcConfig getRpcConfig() {
         if (rpcConfig == null) {
-            synchronized (RpcConfig.class) {
+            synchronized (RpcApplication.class) {
                 if (rpcConfig == null) {
                     init();
                 }
