@@ -1,0 +1,4 @@
+jdk=com.wth.minirpc.serializer.JdkSerializer
+hessian=com.wth.minirpc.serializer.HessianSerializer
+json=com.wth.minirpc.serializer.JsonSerializer
+kryo=com.wth.minirpc.serializer.KryoSerializer

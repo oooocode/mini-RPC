@@ -1,31 +1,29 @@
 package com.wth.minirpc.serializer;
 
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.wth.minirpc.spi.SpiLoader;
+
 
 /**
  * 序列化器工厂
  */
 public class SerializerFactory {
 
-    public static final Map<String, Serializer> KEY_SERIALIZER_MAP = new ConcurrentHashMap<String, Serializer>() {{
-        put(SerializerKeys.JDK, new JdkSerializer());
-        put(SerializerKeys.JSON, new JsonSerializer());
-        put(SerializerKeys.KRYO, new KryoSerializer());
-        put(SerializerKeys.HESSIAN, new HessianSerializer());
-    }};
+    static {
+        SpiLoader.load(Serializer.class);
+    }
 
     /**
      * 默认序列化器
      */
-    private static final Serializer DEFAULT_SERIALIZER = KEY_SERIALIZER_MAP.get(SerializerKeys.JDK);
+    private static final Serializer DEFAULT_SERIALIZER = new JdkSerializer();
 
     /**
-     * 获取序列化器示例
-     * @param key 序列化器 key
-     * @return 序列化器
+     * 获取实例
+     *
+     * @param key
+     * @return
      */
-    public static Serializer get(String key) {
-        return KEY_SERIALIZER_MAP.getOrDefault(key, DEFAULT_SERIALIZER);
+    public static Serializer getInstance(String key) {
+        return SpiLoader.getInstance(Serializer.class, key);
     }
 }
