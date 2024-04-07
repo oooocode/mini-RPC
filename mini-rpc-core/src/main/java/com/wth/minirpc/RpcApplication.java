@@ -1,7 +1,7 @@
 package com.wth.minirpc;
 
 import com.wth.minirpc.config.RpcConfig;
-import com.wth.minirpc.constant.RpcConstant;
+import com.wth.minirpc.constants.RpcConstant;
 import com.wth.minirpc.utils.ConfigUtils;
 import lombok.extern.slf4j.Slf4j;
 

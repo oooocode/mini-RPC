@@ -1,4 +1,4 @@
-package com.wth.minirpc.constant;
+package com.wth.minirpc.constants;
 
 /**
  * RPC 相关变量
